@@ -1,0 +1,29 @@
+#:kivy 1.9.1
+
+BoxLayout:
+    orientation: 'vertical'
+    size: root.size
+
+    BoxLayout:
+        Label:
+            text: "temp"
+
+        Label:
+            id: temp_val
+            text: app.temp
+
+    BoxLayout:
+        Label:
+            text: "hum"
+
+        Label:
+            id: hum_val
+            text: app.hum
+
+    BoxLayout:
+        Label:
+            text: "preessure"
+
+        Label:
+            id: preessure_val
+            text: app.preessure
