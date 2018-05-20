@@ -33,11 +33,11 @@ class bme280App(App):
 
         self.title = 'temp'
 
-        self.temp = str('%-6.2f' % device.temperature) + " °C"
-        self.hum  = str('%6.2f' % device.temperature) +  "%"
-        self.preessure = str('%7.2f' % (device.temperature/100)) + " hpa"
-
-        Clock.schedule_interval(self.calc_temp, 1.0)
+        self.temp = 'Not calculated'
+        self.hum  = 'Not calculated'
+        self.preessure = 'Not calculated'
+        self.read_event = Clock.schedule_interval(self.calc_temp, 1.0)  # 温度を計算するタイマーをセット
+        self.read_event.cancel()    # タイマーをいったん止める
     pass
 
     def calc_temp(self, dt):
@@ -51,6 +51,21 @@ class bme280App(App):
         self.temp = str('%-6.2f' % device.temperature) + " °C"
         self.hum  = str('%6.2f' % device.var_h) +  "%"
         self.preessure = str('%7.2f' % (device.pressure/100)) + " hpa"
+
+    def temp_switch(self, state):
+        ''' トグルボタンの状態で温度センサーからの取得をon/offする '''
+
+        if state == 'down' :    # スイッチオンなので温度センサーの取得を開始する
+            print('on')
+            self.root.ids['temp_switch'].text = 'temp on'
+            self.read_event()
+        else:
+            print('off')
+            self.root.ids['temp_switch'].text = 'temp off'
+            self.read_event.cancel() 
+            self.temp = 'no_culc'
+            self.hum  = 'no_culc'
+            self.preessure = 'no_culc'
 
 if __name__ == '__main__':
 	bme280App().run()

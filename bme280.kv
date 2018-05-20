@@ -4,6 +4,11 @@ BoxLayout:
     orientation: 'vertical'
     size: root.size
 
+    ToggleButton:
+        id: temp_switch
+        text: "temp off"
+        on_press: app.temp_switch(self.state)
+
     BoxLayout:
         Label:
             text: "temp"
