@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>BME280</title>
+        
+        <!-- Include eel.js - note this file doesn't exist in the 'web' directory -->
+        <script type="text/javascript" src="/eel.js"></script>
+        <script type="text/javascript">
+
+        function call_bme() { // Python側で温度を測定
+            console.log("call bme");
+            eel.read_BME280();  
+        }
+        
+        setInterval(call_bme,1000); // 1秒ごとに温度を取得する
+        
+
+        eel.expose(output_temperature)
+        function output_temperature(temperature, hum, preeesure) { // Python側で取得した温度を出力
+            console.log("output_temp");
+            console.log(temperature );
+            console.log(hum);
+            console.log(preeesure);
+            
+            document.getElementById("temperature_frame").innerHTML = temperature + "<br>" + hum + "<br>" + preeesure;
+
+        }
+     
+        </script>
+    </head>
+    
+    <body>
+        BME280
+
+        <div id="temperature_frame">
+        
+        </div>
+    
+    </body>
+</html>

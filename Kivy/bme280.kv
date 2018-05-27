@@ -1,0 +1,34 @@
+#:kivy 1.9.1
+
+BoxLayout:
+    orientation: 'vertical'
+    size: root.size
+
+    ToggleButton:
+        id: temp_switch
+        text: "temp off"
+        on_press: app.temp_switch(self.state)
+
+    BoxLayout:
+        Label:
+            text: "temp"
+
+        Label:
+            id: temp_val
+            text: app.temp
+
+    BoxLayout:
+        Label:
+            text: "hum"
+
+        Label:
+            id: hum_val
+            text: app.hum
+
+    BoxLayout:
+        Label:
+            text: "preessure"
+
+        Label:
+            id: preessure_val
+            text: app.preessure
