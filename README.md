@@ -1,6 +1,6 @@
 # AN-USB-BME280
 
-https://github.com/nonNoise/USB_ScienceKit をPythonのGUIライブラリで可視化しました
+https://github.com/nonNoise/USB_ScienceKit の温度センサーを取得するAN-USB-BME280をPythonのGUIライブラリで表示しています。
 
 
 # Kivy の場合
@@ -23,3 +23,9 @@ https://github.com/nonNoise/USB_ScienceKit をPythonのGUIライブラリで可�
 eel( https://github.com/ChrisKnott/Eel )を使って温度を表示しています
 
 ![eel](./image/eel_label.jpg "eel")
+
+# wxPython の場合
+
+wxPython( https://www.wxpython.org/ )を使って温度を表示しています
+
+![eel](./image/wxPython_label.jpg "eel")
