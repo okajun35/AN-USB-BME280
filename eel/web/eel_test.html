@@ -9,13 +9,13 @@
 
         function call_bme() { // Python側で温度を測定
             console.log("call bme");
-            eel.read_BME280();  
+            eel.read_BME280();  // Python側の関数を呼ぶ
         }
         
         setInterval(call_bme,1000); // 1秒ごとに温度を取得する
         
 
-        eel.expose(output_temperature)
+        eel.expose(output_temperature) // この関数をPythoファイル側に公開する
         function output_temperature(temperature, hum, preeesure) { // Python側で取得した温度を出力
             console.log("output_temp");
             console.log(temperature );

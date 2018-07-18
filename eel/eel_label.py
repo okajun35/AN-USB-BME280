@@ -4,13 +4,9 @@ from PyMCP2221A import BME280
 device = BME280.BME280()
 
 
-eel.init('web')                     # Give folder containing web files
+eel.init('web')     # Webファイルを格納しているフォルダを設定する
 
-@eel.expose                         # Expose this function to Javascript
-def say_hello_py(x):
-    print('Hello from %s' % x)
-
-@eel.expose 
+@eel.expose     # この関数をJavascriptに公開する
 def read_BME280():
     device.readData()
     print ("temperature : %-6.2f ℃" % (device.temperature) )
@@ -22,10 +18,7 @@ def read_BME280():
     hum  = str('%6.2f' % device.var_h) +  "%"
     preessure = str('%7.2f' % (device.pressure/100)) + " hpa"
     
-    eel.output_temperature(temp , hum ,preessure)
+    eel.output_temperature(temp , hum ,preessure)   # Javascript側の関数を呼ぶ
 
 
-say_hello_py('Python World!')
-
-
-eel.start('eel_test.html', size=(300, 200))    # Start
+eel.start('eel_test.html', size=(300, 200))    # 開始
